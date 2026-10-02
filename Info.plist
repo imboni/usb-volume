@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleIdentifier</key>
+	<string>local.lee.USBVolume</string>
+	<key>CFBundleName</key>
+	<string>USB 音量</string>
+	<key>CFBundleDisplayName</key>
+	<string>USB 音量</string>
+	<key>CFBundleExecutable</key>
+	<string>USBVolume</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleVersion</key>
+	<string>1</string>
+	<key>CFBundleShortVersionString</key>
+	<string>0.1.0</string>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>en</string>
+	<key>CFBundleLocalizations</key>
+	<array>
+		<string>en</string><string>zh-Hans</string><string>zh-Hant</string>
+		<string>ja</string><string>ko</string><string>fr</string><string>de</string>
+		<string>es</string><string>it</string><string>pt-BR</string><string>ru</string>
+		<string>ar</string><string>hi</string><string>id</string>
+	</array>
+	<key>LSMinimumSystemVersion</key>
+	<string>14.2</string>
+	<key>LSUIElement</key>
+	<true/>
+	<key>NSHighResolutionCapable</key>
+	<true/>
+	<key>NSPrincipalClass</key>
+	<string>NSApplication</string>
+	<key>NSAudioCaptureUsageDescription</key>
+	<string>USB 音量需要读取系统播放的声音，在本机调节音量后发送给 USB 音箱。不会录制、保存或上传音频。</string>
+	<key>CFBundleIconFile</key>
+	<string>AppIcon</string>
+	<key>NSHumanReadableCopyright</key>
+	<string>USB 音量 · 本机音频控制</string>
+</dict>
+</plist>
