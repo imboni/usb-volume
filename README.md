@@ -2,7 +2,7 @@
 
 免费的 macOS 菜单栏工具，为 USB 音箱提供音量调节、静音和提示音。音频仅在本机处理。
 
-[产品网站](https://imboni.github.io/usb-volume/) · [版本发布](https://github.com/imboni/usb-volume/releases) · [反馈问题](https://github.com/imboni/usb-volume/issues)
+[下载 0.1.0](https://github.com/imboni/usb-volume/releases/download/v0.1.0/USBVolume-0.1.0-arm64.zip) · [产品网站](https://imboni.github.io/usb-volume/) · [版本发布](https://github.com/imboni/usb-volume/releases) · [反馈问题](https://github.com/imboni/usb-volume/issues)
 
 需要 **macOS 14.2+、Apple Silicon**。面向双声道、无输入通道的 USB 输出设备，兼容性因设备而异。
 
