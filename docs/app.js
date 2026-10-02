@@ -6,7 +6,8 @@ const messages = {
     "skip": "跳到主要内容",
     "features": "功能",
     "install": "安装",
-    "download": "免费下载 Mac 版",
+    "releaseStatus": "0.1.0 即将发布",
+    "releaseNote": "实体音量键验证完成后开放下载。",
     "eyebrow": "给 USB 音箱的菜单栏小工具",
     "line1": "USB 接上。",
     "line2": "音量，随手调。",
@@ -32,7 +33,7 @@ const messages = {
     "loginTitle": "可选登录时启动",
     "loginBody": "在设置中开启，登录 Mac 后自动回到菜单栏。",
     "local": "音频只在本机处理，不保存、不上传，不读取麦克风。",
-    "installTitle": "三步，准备好。",
+    "installTitle": "发布后，三步安装。",
     "installSub": "适用于搭载 Apple 芯片的 Mac。",
     "step1Title": "下载，移入应用程序",
     "step1Body": "解压 ZIP，将「USB 音量.app」移入「应用程序」文件夹。",
@@ -52,19 +53,20 @@ const messages = {
     "q5": "退出应用后会怎样？",
     "a5": "音箱会恢复原始音量，声音可能变大。退出或暂停音量控制前，请先暂停播放。",
     "closing": "一个滑块，让 USB 音箱更好用。",
-    "closingDownload": "下载 v0.1.0",
+    "closingRepository": "查看 GitHub 仓库",
     "source": "代码",
     "releases": "版本发布",
     "issues": "反馈问题",
     "title": "USB Volume — USB 音箱，菜单栏调音量",
-    "description": "免费的 macOS 菜单栏音量工具，为 USB 音箱提供软件音量、静音和提示音。支持 14 种语言，音频仅在本机处理。"
+    "description": "免费的 macOS 菜单栏音量工具，为 USB 音箱提供软件音量、静音和提示音。0.1.0 即将发布，验证完成后开放下载。"
   },
   "en": {
     "nav": "Main navigation",
     "skip": "Skip to content",
     "features": "Features",
     "install": "Install",
-    "download": "Download for Mac — free",
+    "releaseStatus": "0.1.0 coming soon",
+    "releaseNote": "Downloads open after physical media-key testing.",
     "eyebrow": "A little menu bar tool for USB speakers",
     "line1": "USB connected.",
     "line2": "Volume in reach.",
@@ -90,7 +92,7 @@ const messages = {
     "loginTitle": "Ready when you log in.",
     "loginBody": "Enable launch at login to bring the menu bar control back automatically.",
     "local": "Audio is processed locally. Never saved or uploaded. No microphone access.",
-    "installTitle": "Three steps. Ready to listen.",
+    "installTitle": "Three steps after release.",
     "installSub": "For Macs with Apple silicon.",
     "step1Title": "Download and move the app.",
     "step1Body": "Unzip the download and move the app to your Applications folder.",
@@ -110,12 +112,12 @@ const messages = {
     "q5": "What happens when I quit?",
     "a5": "Your speaker returns to its original volume, which may be louder. Pause playback before quitting or pausing volume control.",
     "closing": "One slider. A more useful USB speaker.",
-    "closingDownload": "Download v0.1.0",
+    "closingRepository": "View on GitHub",
     "source": "Source",
     "releases": "Releases",
     "issues": "Report an issue",
     "title": "USB Volume — Menu bar volume for USB speakers",
-    "description": "A free macOS menu bar tool for USB speaker volume, mute, and adjustment feedback. 14 languages. Audio stays on your Mac."
+    "description": "A free macOS menu bar tool for USB speaker volume, mute, and adjustment feedback. Version 0.1.0 is coming soon, with downloads available after validation."
   }
 };
 
