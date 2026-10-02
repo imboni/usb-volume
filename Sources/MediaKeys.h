@@ -33,9 +33,9 @@ typedef NS_ENUM(NSInteger, UVMediaKey) {
  * key repeats keep calling handler but never call releaseHandler. */
 @property(nonatomic, copy, nullable) void (^releaseHandler)(UVMediaKey key);
 
-/* Idempotent. Uses a HID-level tap; creation failure remains an error rather
- * than silently falling back to a competing session tap. Does not prompt for
- * or change Accessibility permission. */
+/* Idempotent. Tries HID first, then session once if HID creation is rejected.
+ * Reports the actual location and enabled state; an existing active tap is
+ * retained. Does not prompt for or change Accessibility permission. */
 - (BOOL)start;
 - (void)stop;
 

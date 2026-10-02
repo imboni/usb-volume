@@ -141,7 +141,10 @@ int main(void) {
         assert(([order isEqualToArray:@[@"down", @"down", @"up"]]));
         assert([asyncKeys.diagnostics[@"deliveredDowns"] unsignedLongLongValue] == 2);
         assert([asyncKeys.diagnostics[@"deliveredUps"] unsignedLongLongValue] == 1);
-        assert([asyncKeys.diagnostics[@"tapLocation"] isEqualToString:@"hid"]);
+        // Direct callback tests never create a system tap; diagnostics must not
+        // claim keyboard access or an active listener from parsed events alone.
+        assert([asyncKeys.diagnostics[@"tapLocation"] isEqualToString:@"none"]);
+        assert(![asyncKeys.diagnostics[@"active"] boolValue]);
 
         // Already accepted events must not alter volume after disabling,
         // stopping/restarting, or losing the selected audio route.

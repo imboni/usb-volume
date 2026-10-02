@@ -26,6 +26,8 @@ static CGEventRef UVMediaKeyCallback(CGEventTapProxy proxy, CGEventType type,
 @implementation UVMediaKeys {
     CFMachPortRef _tap;
     CFRunLoopSourceRef _source;
+    NSString *_tapLocation;
+    BOOL _hidCreationFailed;
     NSString *_lastError;
     NSUInteger _ownedDownMask;
     uint64_t _deliveryGeneration;
@@ -54,6 +56,7 @@ static CGEventRef UVMediaKeyCallback(CGEventTapProxy proxy, CGEventType type,
 
 - (instancetype)init {
     if ((self = [super init])) {
+        _tapLocation = @"none";
         _lastError = @"";
         _lastRecognizedKey = -1;
         _lastRecognizedState = -1;
@@ -74,7 +77,9 @@ static CGEventRef UVMediaKeyCallback(CGEventTapProxy proxy, CGEventType type,
 
 - (NSDictionary<NSString *,id> *)diagnostics {
     return @{
-        @"tapLocation":@"hid", @"enabled":@(_enabled), @"active":@(self.active),
+        @"tapLocation":(_tap && CFMachPortIsValid(_tap)) ? _tapLocation : @"none",
+        @"hidCreationFailed":@(_hidCreationFailed),
+        @"enabled":@(_enabled), @"active":@(self.active),
         @"systemDefinedEvents":@(_systemDefinedEvents), @"auxEvents":@(_auxEvents),
         @"recognizedMediaEvents":@(_recognizedMediaEvents),
         @"handledDowns":@(_handledDowns), @"handledUps":@(_handledUps),
@@ -107,10 +112,24 @@ static CGEventRef UVMediaKeyCallback(CGEventTapProxy proxy, CGEventType type,
     [self stop];
     // HID precedes session taps such as MonitorControl's. Filtering still
     // consumes only the three volume keys while our selected route is owned.
+    _hidCreationFailed = NO;
     _tap = CGEventTapCreate(kCGHIDEventTap, kCGHeadInsertEventTap,
                             kCGEventTapOptionDefault,
                             CGEventMaskBit(NX_SYSDEFINED),
                             UVMediaKeyCallback, (__bridge void *)self);
+    if (_tap) {
+        _tapLocation = @"hid";
+    } else {
+        // Some systems reject HID taps for ordinary users. Try the public
+        // session location once, with the same permission and media-only mask.
+        // An active session tap is retained; we never recreate it to race other apps.
+        _hidCreationFailed = YES;
+        _tap = CGEventTapCreate(kCGSessionEventTap, kCGHeadInsertEventTap,
+                                kCGEventTapOptionDefault,
+                                CGEventMaskBit(NX_SYSDEFINED),
+                                UVMediaKeyCallback, (__bridge void *)self);
+        if (_tap) _tapLocation = @"session";
+    }
     if (!_tap) {
         _lastError = @"无法创建键盘音量控制。请确认辅助功能权限后重新打开应用；键盘控制当前未启用。";
         return NO;
@@ -147,6 +166,7 @@ static CGEventRef UVMediaKeyCallback(CGEventTapProxy proxy, CGEventType type,
         CFRelease(_tap);
         _tap = NULL;
     }
+    _tapLocation = @"none";
 }
 
 - (void)requestPermission {
