@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#f6f8f9"><meta name="color-scheme" content="light">
-<meta name="description" content="免费的 macOS 菜单栏音量工具，为 USB 音箱提供软件音量、静音和提示音。0.1.0 即将发布，验证完成后开放下载。">
+<meta name="description" content="免费的 macOS 菜单栏音量工具，为 USB 音箱提供软件音量、静音和提示音。0.1.0 即将发布。">
 <meta property="og:type" content="website"><meta property="og:locale" content="zh_CN">
-<meta property="og:title" content="USB Volume — USB 音箱，菜单栏调音量"><meta property="og:description" content="免费的 macOS 菜单栏音量工具，为 USB 音箱提供软件音量、静音和提示音。0.1.0 即将发布，验证完成后开放下载。">
+<meta property="og:title" content="USB Volume — USB 音箱，菜单栏调音量"><meta property="og:description" content="免费的 macOS 菜单栏音量工具，为 USB 音箱提供软件音量、静音和提示音。0.1.0 即将发布。">
 <meta property="og:url" content="https://imboni.github.io/usb-volume/"><meta property="og:image" content="https://imboni.github.io/usb-volume/assets/app-icon.png">
 <meta property="og:image:width" content="1024"><meta property="og:image:height" content="1024">
 <meta property="og:image:alt" content="USB Volume app icon"><meta name="twitter:card" content="summary">
@@ -33,7 +33,6 @@
 <p data-i18n="eyebrow" class="eyebrow">给 USB 音箱的菜单栏小工具</p><h1 id="hero-title"><span data-i18n="line1" >USB 接上。</span><span data-i18n="line2" >音量，随手调。</span></h1>
 <p data-i18n="intro" class="hero-description">给无法直接调节音量的 USB 音箱，一个常驻 Mac 菜单栏的滑块。</p>
 <p class="release-status"><span class="release-dot" aria-hidden="true"></span><span data-i18n="releaseStatus">0.1.0 即将发布</span></p>
-<p class="release-note" data-i18n="releaseNote">实体音量键验证完成后开放下载。</p>
 <p class="release-meta"><span>macOS 14.2+</span><span aria-hidden="true">/</span><span>Apple Silicon</span></p>
 <div class="signal-stage" id="volume-demo" role="group" aria-label="音量交互演示，不播放声音" data-i18n-aria="demoLabel">
 <svg class="signal-wire" viewBox="0 0 700 260" fill="none" aria-hidden="true"><g class="wire-desktop"><path d="M122 170v13c0 29 23 52 52 52h100c29 0 52-23 52-52v-32c0-22 18-40 40-40" stroke="#e7eded" stroke-width="7"/><path d="M122 170v13c0 29 23 52 52 52h100c29 0 52-23 52-52v-32c0-22 18-40 40-40" stroke="#bbc9ca" stroke-width="2"/><circle cx="366" cy="111" r="3" fill="#799595"/></g><g class="wire-compact"><path d="M113 173v10c0 29 23 52 52 52h85c30 0 54-24 54-54v-14c0-21 17-38 38-38" stroke="#e7eded" stroke-width="7"/><path d="M113 173v10c0 29 23 52 52 52h85c30 0 54-24 54-54v-14c0-21 17-38 38-38" stroke="#bbc9ca" stroke-width="2"/><circle cx="342" cy="129" r="3" fill="#799595"/></g></svg>
@@ -45,7 +44,7 @@
 <div class="volume-popover"><button id="mute-button" class="mute-button" type="button" aria-label="静音演示" aria-pressed="false"><svg aria-hidden="true"><use id="speaker-symbol" href="#speaker"/></svg></button><label data-i18n="demoVolume" class="sr-only" for="demo-volume">演示音量</label><input id="demo-volume" type="range" min="0" max="100" step="1" value="35" aria-valuetext="音量 35%"></div>
 <div class="demo-readout"><span data-i18n="try" >拖动试试</span><span aria-hidden="true">·</span><output id="demo-value" for="demo-volume" aria-live="off">35%</output></div>
 </div></div>
-<p data-i18n="demoCaption" class="demo-caption">交互示意，不播放声音。</p><p data-i18n="compatibility" class="compatibility-note">适用于双声道、无输入通道的 USB 输出设备。已在 MOONDROP MM3A 上验证。</p>
+<p data-i18n="demoCaption" class="demo-caption">交互示意，不播放声音。</p><p data-i18n="compatibility" class="compatibility-note">适用于双声道、无输入通道的 USB 输出设备。</p>
 </section>
 <section class="features page-width" id="features" aria-labelledby="features-title"><div class="section-heading"><h2 data-i18n="featureTitle" id="features-title">需要的功能，刚刚好。</h2><p data-i18n="featureSub" >留在菜单栏，不占 Dock。</p></div><div class="feature-grid"><article class="feature"><span class="feature-mark"><svg aria-hidden="true"><use href="#speaker"/></svg></span><h3 data-i18n="volumeTitle" >滑动调节，点击静音</h3><p data-i18n="volumeBody" >记住音量与输出设备，下次打开接着用。</p></article>
 <article class="feature"><span class="feature-mark"><svg aria-hidden="true"><use href="#wave"/></svg></span><h3 data-i18n="feedbackTitle" >调节之后，轻响一声</h3><p data-i18n="feedbackBody" >松开滑块获得声音反馈。静音或零音量时保持安静。</p></article>
@@ -53,10 +52,10 @@
 <article class="feature"><span class="feature-mark"><svg aria-hidden="true"><use href="#power"/></svg></span><h3 data-i18n="loginTitle" >可选登录时启动</h3><p data-i18n="loginBody" >在设置中开启，登录 Mac 后自动回到菜单栏。</p></article></div><div class="local-note"><span class="local-dot" aria-hidden="true"></span><p data-i18n="local" >音频只在本机处理，不保存、不上传，不读取麦克风。</p></div></section>
 <section class="install page-width" id="install" aria-labelledby="install-title"><div class="section-heading"><h2 data-i18n="installTitle" id="install-title">发布后，三步安装。</h2><p data-i18n="installSub" >适用于搭载 Apple 芯片的 Mac。</p></div><ol class="install-steps"><li><span class="step-number" aria-hidden="true">1</span><div><h3 data-i18n="step1Title" >下载，移入应用程序</h3><p data-i18n="step1Body" >解压 ZIP，将「USB 音量.app」移入「应用程序」文件夹。</p></div></li>
 <li><span class="step-number" aria-hidden="true">2</span><div><h3 data-i18n="step2Title" >允许首次打开</h3><p data-i18n="step2Body" >本版尚未公证。如被 macOS 阻止，在「系统设置 → 隐私与安全性」中选择「仍要打开」。</p></div></li>
-<li><span class="step-number" aria-hidden="true">3</span><div><h3 data-i18n="step3Title" >连接音箱，调节音量</h3><p data-i18n="step3Body" >退出 eqMac 等音频处理软件。按提示允许系统音频录制，再点击顶部菜单栏图标。</p></div></li></ol></section>
-<section class="faq page-width" id="faq" aria-labelledby="faq-title"><div class="section-heading"><h2 data-i18n="faqTitle" id="faq-title">使用前，了解这些。</h2></div><div class="faq-list"><details><summary data-i18n="q1" >我的 USB 音箱可以用吗？</summary><p data-i18n="a1" >目前面向双声道、没有输入通道的 USB 输出设备，已在 MOONDROP MM3A 的 48 kHz 音频通路验证。其他设备的兼容性可能不同；不支持 Intel Mac。</p></details>
+<li><span class="step-number" aria-hidden="true">3</span><div><h3 data-i18n="step3Title" >连接音箱，调节音量</h3><p data-i18n="step3Body" >退出其他音频处理软件。按提示允许系统音频录制，再点击顶部菜单栏图标。</p></div></li></ol></section>
+<section class="faq page-width" id="faq" aria-labelledby="faq-title"><div class="section-heading"><h2 data-i18n="faqTitle" id="faq-title">使用前，了解这些。</h2></div><div class="faq-list"><details><summary data-i18n="q1" >我的 USB 音箱可以用吗？</summary><p data-i18n="a1" >适用于双声道、无输入通道的 USB 输出设备，兼容性因设备而异。需要 macOS 14.2+ 和 Apple Silicon。</p></details>
 <details><summary data-i18n="q2" >为什么需要系统音频录制权限？</summary><p data-i18n="a2" >应用需要读取正在播放的系统音频，调节音量后送回音箱。这个权限名称由 macOS 提供；应用只在内存中处理音频，不录制文件、不上传，也不读取麦克风。</p></details>
-<details><summary data-i18n="q3" >能用键盘音量键吗？</summary><p data-i18n="a3" >键盘音量键支持正在完善，需要单独授予辅助功能权限，目前仍需在实际设备上验证。建议以菜单栏滑块作为主要控制方式。</p></details>
+<details><summary data-i18n="q3" >能用键盘音量键吗？</summary><p data-i18n="a3" >键盘音量键需要辅助功能权限，兼容性取决于键盘与系统配置。若无法使用，可通过菜单栏滑块调节。</p></details>
 <details><summary data-i18n="q4" >系统音量滑块还会变灰吗？</summary><p data-i18n="a4" >可能会。USB Volume 通过自己的菜单栏滑块控制声音，不会改变设备对 macOS 原生音量控制的支持。</p></details>
 <details><summary data-i18n="q5" >退出应用后会怎样？</summary><p data-i18n="a5" >音箱会恢复原始音量，声音可能变大。退出或暂停音量控制前，请先暂停播放。</p></details></div></section>
 <div class="closing page-width"><p data-i18n="closing" >一个滑块，让 USB 音箱更好用。</p><a href="https://github.com/imboni/usb-volume"><span data-i18n="closingRepository">查看 GitHub 仓库</span><svg aria-hidden="true"><use href="#arrow"/></svg></a></div>
