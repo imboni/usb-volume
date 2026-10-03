@@ -36,6 +36,10 @@ bash test.sh
 
 应用位于 `build/USB 音量.app`。`--status` 可只读查询已运行实例；`--list-devices` 列出音频设备。网站为 `docs/` 下的静态文件。
 
+## 开源协议
+
+[MIT License](LICENSE) · Copyright © 2026 Boni。
+
 ## English
 
 USB Volume is a free macOS menu bar utility for USB speaker volume, mute, and adjustment feedback. It includes optional launch at login and 14 interface languages. Requires macOS 14.2+ and Apple Silicon. Designed for stereo USB output devices without input channels; compatibility varies by device.
@@ -43,3 +47,5 @@ USB Volume is a free macOS menu bar utility for USB speaker volume, mute, and ad
 Move the app to Applications and grant system audio recording permission when prompted. The app is locally signed and not notarized by Apple. Media keys require Accessibility permission and may be affected by other audio-control apps.
 
 Audio stays in memory and is never saved or uploaded. The microphone is not used. **Pause playback before quitting or pausing control: the speaker returns to its original volume.**
+
+Licensed under the [MIT License](LICENSE).
