@@ -1,0 +1,89 @@
+{
+  "subtitle": {
+    "message": "Volume delle schede"
+  },
+  "current": {
+    "message": "Pagina attuale"
+  },
+  "enable": {
+    "message": "Attiva"
+  },
+  "connecting": {
+    "message": "Connessione…"
+  },
+  "unavailable": {
+    "message": "Non disponibile"
+  },
+  "list": {
+    "message": "Volume delle pagine"
+  },
+  "mute": {
+    "message": "Disattiva audio"
+  },
+  "unmute": {
+    "message": "Riattiva audio"
+  },
+  "reset": {
+    "message": "Ripristina al 100%"
+  },
+  "stop": {
+    "message": "Interrompi controllo"
+  },
+  "stopped": {
+    "message": "Interrompendo si ripristina il volume originale. Prima metti in pausa la riproduzione."
+  },
+  "privacy": {
+    "message": "Elaborazione locale. Nessun audio salvato."
+  },
+  "help": {
+    "message": "Come funziona"
+  },
+  "dismiss": {
+    "message": "Chiudi errore"
+  },
+  "browserPage": {
+    "message": "Pagina del browser"
+  },
+  "hint": {
+    "message": "Continua a funzionare quando chiudi questa finestra. Il volume della pagina si combina con quello dell’app e quello generale. Interrompendo il controllo si ripristina il volume originale: prima metti in pausa."
+  },
+  "reopen": {
+    "message": "Chiudi e riapri questa finestra per riprovare."
+  },
+  "failure": {
+    "message": "Impossibile applicare: "
+  },
+  "volume": {
+    "message": "Volume"
+  },
+  "tab": {
+    "message": "Scheda"
+  },
+  "errorConnection": {
+    "message": "La connessione audio non è disponibile."
+  },
+  "errorCapture": {
+    "message": "Impossibile acquisire l’audio di questa pagina. Ricaricala e riprova."
+  },
+  "errorTimeout": {
+    "message": "L’audio non si è avviato in tempo. Riprova."
+  },
+  "errorTabEnded": {
+    "message": "Questa scheda non è più controllata. Attivala di nuovo."
+  },
+  "errorUnavailable": {
+    "message": "Apri questa estensione su una normale pagina web."
+  },
+  "errorPermission": {
+    "message": "L’accesso all’audio è stato negato. Apri l’estensione su questa pagina e riprova."
+  },
+  "errorOperation": {
+    "message": "Impossibile applicare la modifica. Riprova."
+  },
+  "extensionName": {
+    "message": "USB Volume · Volume delle schede"
+  },
+  "extensionDescription": {
+    "message": "Regola il volume e silenzia ogni scheda. Audio elaborato sul dispositivo, senza registrazioni né caricamenti."
+  }
+}

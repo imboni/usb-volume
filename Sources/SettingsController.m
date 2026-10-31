@@ -4,6 +4,7 @@
 #include <math.h>
 
 static NSString *const UVSettingsFeedbackKey = @"USBVolume.feedback";
+static NSString *const UVSettingsAutomaticDetectionKey = @"USBVolume.autoDetectUSB";
 
 static NSTextField *UVSettingsLabel(NSString *text, CGFloat size) {
     NSTextField *label = [NSTextField labelWithString:text];
@@ -18,6 +19,8 @@ static NSTextField *UVSettingsLabel(NSString *text, CGFloat size) {
 @property(nonatomic) NSPopUpButton *languagePicker;
 @property(nonatomic) NSLayoutConstraint *languagePickerWidth;
 @property(nonatomic) NSLayoutConstraint *feedbackTop;
+@property(nonatomic) NSArray<NSLayoutConstraint *> *directionalConstraints;
+@property(nonatomic) BOOL constraintsRightToLeft;
 @property(nonatomic) BOOL showsLoginDetail;
 @property(nonatomic) NSTextField *loginLabel;
 @property(nonatomic) NSTextField *keyboardLabel;
@@ -26,6 +29,7 @@ static NSTextField *UVSettingsLabel(NSString *text, CGFloat size) {
 @property(nonatomic) NSTextField *loginStatusLabel;
 @property(nonatomic) NSButton *loginSettingsButton;
 @property(nonatomic) NSButton *feedbackCheckbox;
+@property(nonatomic) NSButton *automaticDetectionCheckbox;
 @property(nonatomic) NSTextField *keyboardStatusLabel;
 @property(nonatomic) NSButton *keyboardPermissionButton;
 @property(nonatomic) BOOL updatingLogin;
@@ -39,7 +43,7 @@ static NSTextField *UVSettingsLabel(NSString *text, CGFloat size) {
 @implementation UVSettingsController
 
 - (instancetype)init {
-    NSWindow *window = [[NSWindow alloc] initWithContentRect:NSMakeRect(0, 0, 360, 232)
+    NSWindow *window = [[NSWindow alloc] initWithContentRect:NSMakeRect(0, 0, 360, 260)
                                                 styleMask:NSWindowStyleMaskTitled | NSWindowStyleMaskClosable
                                                   backing:NSBackingStoreBuffered defer:NO];
     if ((self = [super initWithWindow:window])) {
@@ -90,6 +94,9 @@ static NSTextField *UVSettingsLabel(NSString *text, CGFloat size) {
     self.feedbackCheckbox = [NSButton checkboxWithTitle:@"" target:self action:@selector(feedbackChanged:)];
     self.feedbackCheckbox.translatesAutoresizingMaskIntoConstraints = NO;
     self.feedbackCheckbox.accessibilityIdentifier = @"feedbackCheckbox";
+    self.automaticDetectionCheckbox = [NSButton checkboxWithTitle:@"" target:self action:@selector(automaticDetectionChanged:)];
+    self.automaticDetectionCheckbox.translatesAutoresizingMaskIntoConstraints = NO;
+    self.automaticDetectionCheckbox.accessibilityIdentifier = @"automaticDetectionCheckbox";
     self.keyboardLabel = UVSettingsLabel(@"", 13);
     self.keyboardLabel.maximumNumberOfLines = 2;
     self.keyboardLabel.lineBreakMode = NSLineBreakByWordWrapping;
@@ -108,7 +115,7 @@ static NSTextField *UVSettingsLabel(NSString *text, CGFloat size) {
     self.aboutButton.controlSize = NSControlSizeSmall;
     self.aboutButton.accessibilityIdentifier = @"aboutButton";
     for (NSView *view in @[self.languageLabel, self.languagePicker, self.loginLabel, self.loginSwitch,
-                          self.loginStatusLabel, self.loginSettingsButton, self.feedbackCheckbox,
+                          self.loginStatusLabel, self.loginSettingsButton, self.feedbackCheckbox, self.automaticDetectionCheckbox,
                           self.keyboardLabel, self.keyboardStatusLabel, self.keyboardPermissionButton, self.aboutButton]) {
         [content addSubview:view];
     }
@@ -117,37 +124,62 @@ static NSTextField *UVSettingsLabel(NSString *text, CGFloat size) {
     }
     self.feedbackTop = [self.feedbackCheckbox.topAnchor constraintEqualToAnchor:self.loginLabel.bottomAnchor constant:24];
     [NSLayoutConstraint activateConstraints:@[
-        [self.languageLabel.leadingAnchor constraintEqualToAnchor:content.leadingAnchor constant:16],
         [self.languageLabel.topAnchor constraintEqualToAnchor:content.topAnchor constant:20],
-        [self.languagePicker.trailingAnchor constraintEqualToAnchor:content.trailingAnchor constant:-16],
         [self.languagePicker.centerYAnchor constraintEqualToAnchor:self.languageLabel.centerYAnchor],
-        [self.languageLabel.trailingAnchor constraintLessThanOrEqualToAnchor:self.languagePicker.leadingAnchor constant:-16],
         self.languagePickerWidth,
-        [self.loginLabel.leadingAnchor constraintEqualToAnchor:self.languageLabel.leadingAnchor],
         [self.loginLabel.topAnchor constraintEqualToAnchor:self.languageLabel.bottomAnchor constant:24],
-        [self.loginSwitch.trailingAnchor constraintEqualToAnchor:self.languagePicker.trailingAnchor],
         [self.loginSwitch.centerYAnchor constraintEqualToAnchor:self.loginLabel.centerYAnchor],
-        [self.loginLabel.trailingAnchor constraintLessThanOrEqualToAnchor:self.loginSwitch.leadingAnchor constant:-16],
-        [self.loginStatusLabel.leadingAnchor constraintEqualToAnchor:self.loginLabel.leadingAnchor],
         [self.loginStatusLabel.topAnchor constraintEqualToAnchor:self.loginLabel.bottomAnchor constant:8],
-        [self.loginStatusLabel.trailingAnchor constraintEqualToAnchor:self.loginSettingsButton.leadingAnchor constant:-8],
-        [self.loginSettingsButton.trailingAnchor constraintEqualToAnchor:self.loginSwitch.trailingAnchor],
         [self.loginSettingsButton.centerYAnchor constraintEqualToAnchor:self.loginStatusLabel.centerYAnchor],
-        [self.feedbackCheckbox.leadingAnchor constraintEqualToAnchor:self.loginLabel.leadingAnchor],
-        [self.feedbackCheckbox.trailingAnchor constraintLessThanOrEqualToAnchor:self.languagePicker.trailingAnchor],
         self.feedbackTop,
-        [self.keyboardLabel.leadingAnchor constraintEqualToAnchor:self.loginLabel.leadingAnchor],
-        [self.keyboardLabel.topAnchor constraintEqualToAnchor:self.feedbackCheckbox.bottomAnchor constant:16],
-        [self.keyboardLabel.trailingAnchor constraintLessThanOrEqualToAnchor:self.keyboardPermissionButton.leadingAnchor constant:-16],
-        [self.keyboardStatusLabel.leadingAnchor constraintEqualToAnchor:self.loginLabel.leadingAnchor],
+        [self.automaticDetectionCheckbox.topAnchor constraintEqualToAnchor:self.feedbackCheckbox.bottomAnchor constant:8],
+        [self.keyboardLabel.topAnchor constraintEqualToAnchor:self.automaticDetectionCheckbox.bottomAnchor constant:16],
         [self.keyboardStatusLabel.topAnchor constraintEqualToAnchor:self.keyboardLabel.bottomAnchor constant:4],
-        [self.keyboardStatusLabel.trailingAnchor constraintLessThanOrEqualToAnchor:self.keyboardPermissionButton.leadingAnchor constant:-12],
-        [self.keyboardPermissionButton.trailingAnchor constraintEqualToAnchor:self.loginSwitch.trailingAnchor],
         [self.keyboardPermissionButton.centerYAnchor constraintEqualToAnchor:self.keyboardLabel.centerYAnchor],
-        [self.aboutButton.trailingAnchor constraintEqualToAnchor:self.loginSwitch.trailingAnchor],
         [self.aboutButton.bottomAnchor constraintEqualToAnchor:content.bottomAnchor constant:-16],
         [self.aboutButton.topAnchor constraintGreaterThanOrEqualToAnchor:self.keyboardStatusLabel.bottomAnchor constant:12],
     ]];
+}
+
+- (void)updateDirectionalConstraints {
+    BOOL rtl = UVIsRightToLeft();
+    if (self.directionalConstraints && self.constraintsRightToLeft == rtl) return;
+    [NSLayoutConstraint deactivateConstraints:self.directionalConstraints ?: @[]];
+    NSView *content = self.window.contentView;
+    CGFloat sign = rtl ? -1 : 1;
+    NSLayoutXAxisAnchor *(^leading)(NSView *) = ^NSLayoutXAxisAnchor *(NSView *view) { return rtl ? view.rightAnchor : view.leftAnchor; };
+    NSLayoutXAxisAnchor *(^trailing)(NSView *) = ^NSLayoutXAxisAnchor *(NSView *view) { return rtl ? view.leftAnchor : view.rightAnchor; };
+    NSLayoutConstraint *(^before)(NSView *, NSView *, CGFloat) = ^NSLayoutConstraint *(NSView *first, NSView *second, CGFloat gap) {
+        return rtl ? [trailing(first) constraintGreaterThanOrEqualToAnchor:leading(second) constant:gap] :
+                     [trailing(first) constraintLessThanOrEqualToAnchor:leading(second) constant:-gap];
+    };
+    // AppKit's existing leading/trailing constraints do not reliably mirror when
+    // an in-app language override changes. Recreate only horizontal constraints.
+    self.directionalConstraints = @[
+        [leading(self.languageLabel) constraintEqualToAnchor:leading(content) constant:16 * sign],
+        [trailing(self.languagePicker) constraintEqualToAnchor:trailing(content) constant:-16 * sign],
+        before(self.languageLabel, self.languagePicker, 16),
+        [leading(self.loginLabel) constraintEqualToAnchor:leading(self.languageLabel)],
+        [trailing(self.loginSwitch) constraintEqualToAnchor:trailing(self.languagePicker)],
+        before(self.loginLabel, self.loginSwitch, 16),
+        [leading(self.loginStatusLabel) constraintEqualToAnchor:leading(self.loginLabel)],
+        [trailing(self.loginStatusLabel) constraintEqualToAnchor:leading(self.loginSettingsButton) constant:-8 * sign],
+        [trailing(self.loginSettingsButton) constraintEqualToAnchor:trailing(self.loginSwitch)],
+        [leading(self.feedbackCheckbox) constraintEqualToAnchor:leading(self.loginLabel)],
+        rtl ? [trailing(self.feedbackCheckbox) constraintGreaterThanOrEqualToAnchor:trailing(self.languagePicker)] :
+              [trailing(self.feedbackCheckbox) constraintLessThanOrEqualToAnchor:trailing(self.languagePicker)],
+        [leading(self.automaticDetectionCheckbox) constraintEqualToAnchor:leading(self.feedbackCheckbox)],
+        rtl ? [trailing(self.automaticDetectionCheckbox) constraintGreaterThanOrEqualToAnchor:trailing(self.languagePicker)] :
+              [trailing(self.automaticDetectionCheckbox) constraintLessThanOrEqualToAnchor:trailing(self.languagePicker)],
+        [leading(self.keyboardLabel) constraintEqualToAnchor:leading(self.loginLabel)],
+        before(self.keyboardLabel, self.keyboardPermissionButton, 16),
+        [leading(self.keyboardStatusLabel) constraintEqualToAnchor:leading(self.loginLabel)],
+        before(self.keyboardStatusLabel, self.keyboardPermissionButton, 12),
+        [trailing(self.keyboardPermissionButton) constraintEqualToAnchor:trailing(self.loginSwitch)],
+        [trailing(self.aboutButton) constraintEqualToAnchor:trailing(self.loginSwitch)]
+    ];
+    [NSLayoutConstraint activateConstraints:self.directionalConstraints];
+    self.constraintsRightToLeft = rtl;
 }
 
 - (void)applyLocalization {
@@ -159,6 +191,10 @@ static NSTextField *UVSettingsLabel(NSString *text, CGFloat size) {
     self.loginSettingsButton.title = UVL(@"系统设置…");
     self.feedbackCheckbox.title = UVL(@"调节时播放提示音");
     self.feedbackCheckbox.accessibilityLabel = self.feedbackCheckbox.title;
+    self.automaticDetectionCheckbox.title = UVL(@"自动检测 USB 音箱");
+    self.automaticDetectionCheckbox.accessibilityLabel = self.automaticDetectionCheckbox.title;
+    self.automaticDetectionCheckbox.toolTip = UVL(@"断开后停止控制，连接时询问是否启用。");
+    self.automaticDetectionCheckbox.accessibilityHelp = self.automaticDetectionCheckbox.toolTip;
     self.keyboardLabel.stringValue = UVL(@"键盘音量键");
     self.aboutButton.title = UVL(@"关于…");
     [self.languagePicker removeAllItems];
@@ -185,6 +221,7 @@ static NSTextField *UVSettingsLabel(NSString *text, CGFloat size) {
             if ([control isKindOfClass:NSTextField.class]) control.alignment = NSTextAlignmentNatural;
         }
     }
+    [self updateDirectionalConstraints];
     [self refreshPreferences];
     [self resizeForLocalizedContent];
 }
@@ -195,7 +232,10 @@ static NSTextField *UVSettingsLabel(NSString *text, CGFloat size) {
     for (NSMenuItem *item in self.languagePicker.itemArray) {
         popupWidth = MAX(popupWidth, ceil([item.title sizeWithAttributes:popupAttributes].width) + 36);
     }
-    self.languagePickerWidth.constant = MIN(240, popupWidth);
+    // NSPopUpButton includes menu/checkmark/bezel spacing that plain text
+    // measurement misses (notably a three-point shortfall for German).
+    popupWidth = MAX(popupWidth, ceil(self.languagePicker.intrinsicContentSize.width));
+    self.languagePickerWidth.constant = popupWidth;
     CGFloat (^textWidth)(NSTextField *) = ^CGFloat(NSTextField *label) {
         return ceil([label.stringValue sizeWithAttributes:@{NSFontAttributeName:label.font}].width);
     };
@@ -203,6 +243,7 @@ static NSTextField *UVSettingsLabel(NSString *text, CGFloat size) {
     width = MAX(width, textWidth(self.languageLabel) + self.languagePickerWidth.constant + 48);
     width = MAX(width, textWidth(self.loginLabel) + self.loginSwitch.intrinsicContentSize.width + 48);
     width = MAX(width, self.feedbackCheckbox.intrinsicContentSize.width + 32);
+    width = MAX(width, self.automaticDetectionCheckbox.intrinsicContentSize.width + 32);
     width = MAX(width, textWidth(self.keyboardLabel) + self.keyboardPermissionButton.intrinsicContentSize.width + 48);
     if (self.showsLoginDetail) {
         width = MAX(width, textWidth(self.loginStatusLabel) + self.loginSettingsButton.intrinsicContentSize.width + 40);
@@ -221,7 +262,7 @@ static NSTextField *UVSettingsLabel(NSString *text, CGFloat size) {
                                                             attributes:attributes].size.height);
         extraHeight += MAX(0, wrapped - oneLine);
     }
-    NSSize size = NSMakeSize(width, 232 + (self.showsLoginDetail ? 32 : 0) + extraHeight);
+    NSSize size = NSMakeSize(width, 260 + (self.showsLoginDetail ? 32 : 0) + extraHeight);
     if (!NSEqualSizes(self.window.contentView.bounds.size, size)) {
         NSRect oldFrame = self.window.frame;
         [self.window setContentSize:size];
@@ -282,14 +323,16 @@ static NSTextField *UVSettingsLabel(NSString *text, CGFloat size) {
     self.loginStatusLabel.hidden = !self.showsLoginDetail;
     self.loginSwitch.toolTip = self.loginStatusLabel.stringValue;
     self.feedbackTop.constant = self.showsLoginDetail ? 56 : 24;
-    [self refreshFeedbackPreference];
+    [self refreshCheckboxPreferences];
     [self refreshKeyboardStatus];
     [self resizeForLocalizedContent];
 }
 
-- (void)refreshFeedbackPreference {
+- (void)refreshCheckboxPreferences {
     NSNumber *feedback = [NSUserDefaults.standardUserDefaults objectForKey:UVSettingsFeedbackKey];
     self.feedbackCheckbox.state = (!feedback || feedback.boolValue) ? NSControlStateValueOn : NSControlStateValueOff;
+    NSNumber *automaticDetection = [NSUserDefaults.standardUserDefaults objectForKey:UVSettingsAutomaticDetectionKey];
+    self.automaticDetectionCheckbox.state = (!automaticDetection || automaticDetection.boolValue) ? NSControlStateValueOn : NSControlStateValueOff;
 }
 
 - (void)loginChanged:(NSSwitch *)sender {
@@ -331,6 +374,11 @@ static NSTextField *UVSettingsLabel(NSString *text, CGFloat size) {
     if (self.feedbackChanged) self.feedbackChanged();
 }
 
+- (void)automaticDetectionChanged:(NSButton *)sender {
+    [NSUserDefaults.standardUserDefaults setBool:sender.state == NSControlStateValueOn forKey:UVSettingsAutomaticDetectionKey];
+    if (self.automaticDetectionChanged) self.automaticDetectionChanged();
+}
+
 - (void)updateKeyboardActive:(BOOL)active needsPermission:(BOOL)needsPermission {
     if (!NSThread.isMainThread) {
         dispatch_async(dispatch_get_main_queue(), ^{ [self updateKeyboardActive:active needsPermission:needsPermission]; });
@@ -339,6 +387,7 @@ static NSTextField *UVSettingsLabel(NSString *text, CGFloat size) {
     self.keyboardActive = active;
     self.keyboardNeedsPermission = needsPermission;
     [self refreshKeyboardStatus];
+    [self resizeForLocalizedContent];
 }
 
 - (void)refreshKeyboardStatus {
@@ -379,8 +428,8 @@ static NSTextField *UVSettingsLabel(NSString *text, CGFloat size) {
 - (void)defaultsChanged:(NSNotification *)notification {
     (void)notification;
     // Volume drags also write defaults; avoid ServiceManagement IPC on those events.
-    if (NSThread.isMainThread) [self refreshFeedbackPreference];
-    else dispatch_async(dispatch_get_main_queue(), ^{ [self refreshFeedbackPreference]; });
+    if (NSThread.isMainThread) [self refreshCheckboxPreferences];
+    else dispatch_async(dispatch_get_main_queue(), ^{ [self refreshCheckboxPreferences]; });
 }
 
 - (void)windowDidBecomeKey:(NSNotification *)notification { (void)notification; [self refreshPreferences]; }

@@ -17,12 +17,23 @@ int main(void) {
         [NSUserDefaults.standardUserDefaults setVolatileDomain:@{@"USBVolume.language":@"ar"} forName:NSArgumentDomain];
         UVRefreshLanguage();
         assert(UVIsRightToLeft());
+        NSString *arabicPercent = UVPercentString(0.42);
+        assert(arabicPercent.length && ![arabicPercent isEqual:@"42%"]);
+        assert([UVIsolateText(@"Music") isEqual:@"\u2068Music\u2069"]);
         [NSUserDefaults.standardUserDefaults setVolatileDomain:@{@"USBVolume.language":@"en"} forName:NSArgumentDomain];
         __block NSUInteger notifications = 0;
         id observer = [NSNotificationCenter.defaultCenter addObserverForName:UVLanguageDidChangeNotification object:nil queue:nil usingBlock:^(NSNotification *note) { (void)note; notifications++; }];
         UVRefreshLanguage();
         assert(!UVIsRightToLeft() && notifications == 1);
         assert([UVL(@"设置") isEqualToString:@"Settings"]);
+        assert([UVPercentString(0.42) isEqual:@"42%"]);
+        assert([UVPercentString(1.5) isEqual:@"100%"]);
+        assert([UVPercentString(-1) isEqual:@"0%"]);
+        assert([UVIsolateText(@"Music") isEqual:@"Music"]);
+        [NSUserDefaults.standardUserDefaults setVolatileDomain:@{@"USBVolume.language":@"fr"} forName:NSArgumentDomain];
+        UVRefreshLanguage();
+        assert(![UVPercentString(0.42) isEqual:@"42%"]); // French separates the percent sign.
+        assert(![UVPercentString(0.42) isEqual:arabicPercent]);
         [NSNotificationCenter.defaultCenter removeObserver:observer];
         puts("Localization: region matching, fallback, runtime refresh and RTL passed.");
     }

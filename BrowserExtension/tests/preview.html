@@ -1,0 +1,8 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>USB Volume UI fixture</title></head><body><script type="module">
+// Loads the real popup, with a local deterministic browser-API fixture. No audio,
+// extension installation, permissions, external requests or browser profile changes.
+const markup = await (await fetch('../popup.html')).text();
+const preview = markup.replace('href="popup.css"', 'href="../popup.css"')
+  .replace('<script type="module" src="popup.js"></scr' + 'ipt>', '<script src="preview-api.js"></scr' + 'ipt><script type="module" src="../popup.js"></scr' + 'ipt>');
+document.open(); document.write(preview); document.close();
+</script></body></html>

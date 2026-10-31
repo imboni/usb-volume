@@ -1,0 +1,89 @@
+{
+  "subtitle": {
+    "message": "Volumen de pestañas"
+  },
+  "current": {
+    "message": "Página actual"
+  },
+  "enable": {
+    "message": "Activar"
+  },
+  "connecting": {
+    "message": "Conectando…"
+  },
+  "unavailable": {
+    "message": "No disponible"
+  },
+  "list": {
+    "message": "Volumen de páginas"
+  },
+  "mute": {
+    "message": "Silenciar"
+  },
+  "unmute": {
+    "message": "Activar sonido"
+  },
+  "reset": {
+    "message": "Restablecer al 100 %"
+  },
+  "stop": {
+    "message": "Detener control"
+  },
+  "stopped": {
+    "message": "Al detenerlo se restaura el volumen original. Pausa primero la reproducción."
+  },
+  "privacy": {
+    "message": "Procesamiento local. No se guarda audio."
+  },
+  "help": {
+    "message": "Cómo funciona"
+  },
+  "dismiss": {
+    "message": "Cerrar error"
+  },
+  "browserPage": {
+    "message": "Página del navegador"
+  },
+  "hint": {
+    "message": "Sigue funcionando al cerrar esta ventana. El volumen de la página se combina con el de la app y el general. Al detener el control se restaura el volumen original; pausa primero la reproducción."
+  },
+  "reopen": {
+    "message": "Cierra y vuelve a abrir esta ventana para reintentarlo."
+  },
+  "failure": {
+    "message": "No se pudo aplicar: "
+  },
+  "volume": {
+    "message": "Volumen"
+  },
+  "tab": {
+    "message": "Pestaña"
+  },
+  "errorConnection": {
+    "message": "La conexión de audio no está disponible."
+  },
+  "errorCapture": {
+    "message": "No se pudo capturar el audio de esta página. Recárgala y vuelve a intentarlo."
+  },
+  "errorTimeout": {
+    "message": "El audio no se inició a tiempo. Vuelve a intentarlo."
+  },
+  "errorTabEnded": {
+    "message": "Esta pestaña ya no está bajo control. Actívala de nuevo."
+  },
+  "errorUnavailable": {
+    "message": "Abre esta extensión en una página web normal."
+  },
+  "errorPermission": {
+    "message": "Se denegó el acceso al audio. Abre la extensión en esta página y vuelve a intentarlo."
+  },
+  "errorOperation": {
+    "message": "No se pudo aplicar el cambio. Vuelve a intentarlo."
+  },
+  "extensionName": {
+    "message": "USB Volume · Volumen de pestañas"
+  },
+  "extensionDescription": {
+    "message": "Ajusta el volumen y silencia cada pestaña. El audio se procesa en tu dispositivo, sin grabaciones ni subidas."
+  }
+}

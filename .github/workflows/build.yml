@@ -12,7 +12,11 @@ jobs:
       - uses: actions/checkout@v7.0.1
       - name: Test audio processing, media keys and localization
         run: bash test.sh
+      - name: Test browser volume extension
+        run: node --test BrowserExtension/tests/*.test.js
       - name: Build signed application
         run: bash build.sh
       - name: Check website JavaScript
         run: node --check docs/app.js
+      - name: Check release, documentation and localized resources
+        run: python3 Tests/ReleaseResources.py

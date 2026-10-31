@@ -30,6 +30,10 @@ void VDDestroy(VDState *state);
 /* Safe to call concurrently with VDProcess. Changes ramp over 10 ms. */
 void VDSetGain(VDState *state, float linearGain);
 
+/* Emergency fail-closed mute. On the next audio callback, skip the normal
+ * ramp and render silence. Only an explicit later VDSetGain can restore sound. */
+void VDMuteImmediately(VDState *state);
+
 /* Request a gentle 80 ms confirmation tone, mixed into both output channels
  * before the current volume gain. Safe on any thread. Pending requests coalesce;
  * an active tone finishes before a pending tone begins. Muting cancels feedback

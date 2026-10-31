@@ -1,0 +1,89 @@
+{
+  "subtitle": {
+    "message": "Volume des onglets"
+  },
+  "current": {
+    "message": "Page actuelle"
+  },
+  "enable": {
+    "message": "Activer"
+  },
+  "connecting": {
+    "message": "Connexion…"
+  },
+  "unavailable": {
+    "message": "Indisponible"
+  },
+  "list": {
+    "message": "Volume des pages"
+  },
+  "mute": {
+    "message": "Couper le son"
+  },
+  "unmute": {
+    "message": "Rétablir le son"
+  },
+  "reset": {
+    "message": "Rétablir à 100 %"
+  },
+  "stop": {
+    "message": "Arrêter le contrôle"
+  },
+  "stopped": {
+    "message": "L’arrêt rétablit le volume d’origine. Mettez d’abord la lecture en pause."
+  },
+  "privacy": {
+    "message": "Traitement local. Aucun son enregistré."
+  },
+  "help": {
+    "message": "Mode d’emploi"
+  },
+  "dismiss": {
+    "message": "Fermer l’erreur"
+  },
+  "browserPage": {
+    "message": "Page du navigateur"
+  },
+  "hint": {
+    "message": "Le contrôle continue quand cette fenêtre est fermée. Le volume de la page se combine avec celui de l’app et le volume général. L’arrêt rétablit le volume d’origine : mettez d’abord la lecture en pause."
+  },
+  "reopen": {
+    "message": "Fermez puis rouvrez cette fenêtre pour réessayer."
+  },
+  "failure": {
+    "message": "Impossible d’appliquer : "
+  },
+  "volume": {
+    "message": "Volume"
+  },
+  "tab": {
+    "message": "Onglet"
+  },
+  "errorConnection": {
+    "message": "La connexion audio est indisponible."
+  },
+  "errorCapture": {
+    "message": "Impossible de capter le son de cette page. Rechargez-la et réessayez."
+  },
+  "errorTimeout": {
+    "message": "Le son n’a pas démarré à temps. Réessayez."
+  },
+  "errorTabEnded": {
+    "message": "Cet onglet n’est plus contrôlé. Activez-le à nouveau."
+  },
+  "errorUnavailable": {
+    "message": "Ouvrez cette extension sur une page web classique."
+  },
+  "errorPermission": {
+    "message": "L’accès au son a été refusé. Ouvrez l’extension sur cette page et réessayez."
+  },
+  "errorOperation": {
+    "message": "Impossible d’appliquer la modification. Réessayez."
+  },
+  "extensionName": {
+    "message": "USB Volume · Volume des onglets"
+  },
+  "extensionDescription": {
+    "message": "Réglez le volume et le son de chaque onglet. Traitement local, sans enregistrement ni envoi de données audio."
+  }
+}

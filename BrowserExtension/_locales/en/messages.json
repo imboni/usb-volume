@@ -1,0 +1,89 @@
+{
+  "subtitle": {
+    "message": "Tab volume"
+  },
+  "current": {
+    "message": "Current page"
+  },
+  "enable": {
+    "message": "Enable"
+  },
+  "connecting": {
+    "message": "Connecting…"
+  },
+  "unavailable": {
+    "message": "Unavailable"
+  },
+  "list": {
+    "message": "Page volume"
+  },
+  "mute": {
+    "message": "Mute"
+  },
+  "unmute": {
+    "message": "Unmute"
+  },
+  "reset": {
+    "message": "Reset to 100%"
+  },
+  "stop": {
+    "message": "Stop control"
+  },
+  "stopped": {
+    "message": "Stopping restores the original volume. Pause playback first."
+  },
+  "privacy": {
+    "message": "On device. No audio saved."
+  },
+  "help": {
+    "message": "How it works"
+  },
+  "dismiss": {
+    "message": "Dismiss error"
+  },
+  "browserPage": {
+    "message": "Browser page"
+  },
+  "hint": {
+    "message": "Keeps working with the popup closed. Page volume combines with app and master volume. Stopping restores original volume; pause playback first."
+  },
+  "reopen": {
+    "message": "Close and reopen this popup to try again."
+  },
+  "failure": {
+    "message": "Could not apply: "
+  },
+  "volume": {
+    "message": "Volume"
+  },
+  "tab": {
+    "message": "Tab"
+  },
+  "errorConnection": {
+    "message": "The audio connection is unavailable."
+  },
+  "errorCapture": {
+    "message": "This page could not share its audio. Reload it and try again."
+  },
+  "errorTimeout": {
+    "message": "Audio did not start in time. Try again."
+  },
+  "errorTabEnded": {
+    "message": "This tab is no longer controlled. Enable it again."
+  },
+  "errorUnavailable": {
+    "message": "Open this extension on a regular web page."
+  },
+  "errorPermission": {
+    "message": "Audio access was denied. Open the extension on this page and try again."
+  },
+  "errorOperation": {
+    "message": "The change could not be applied. Try again."
+  },
+  "extensionName": {
+    "message": "USB Volume · Tab volume"
+  },
+  "extensionDescription": {
+    "message": "Control volume and mute for individual tabs. Audio stays on your device; nothing is recorded or uploaded."
+  }
+}

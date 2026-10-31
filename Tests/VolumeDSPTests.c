@@ -372,7 +372,27 @@ static void testFeedbackRetriggerAndBounds(void) {
     VDDestroy(state);
 }
 
+static void testEmergencyMute(void) {
+    float input[8] = {1, -1, 1, -1, 1, -1, 1, -1}, output[8];
+    AudioBufferList in = interleaved(input, 4), out = interleaved(output, 4);
+    VDState *state = VDCreate(48000, 0.5f);
+    VDTriggerFeedback(state);
+    VDMuteImmediately(state);
+    VDProcess(state, &in, &out);
+    for (unsigned i = 0; i < 8; ++i) assert(output[i] == 0);
+    assert(VDGetStats(state).currentGain == 0);
+    assert(VDGetStats(state).feedbackCount == 0);
+    VDProcess(state, &in, &out);
+    for (unsigned i = 0; i < 8; ++i) assert(output[i] == 0);
+    VDSetGain(state, 0.5f); // explicit recovery still ramps smoothly
+    VDProcess(state, &in, &out);
+    assert(output[0] > 0 && output[0] < 0.01f);
+    VDDestroy(state);
+    VDMuteImmediately(NULL);
+}
+
 int main(void) {
+    testEmergencyMute();
     testSineAttenuation();
     testStereoLayouts();
     testRampContinuityAndMute();
@@ -384,6 +404,6 @@ int main(void) {
     testFeedbackMuteAndInvalidInput();
     testFeedbackWithMissingAndMalformedInput();
     testFeedbackRetriggerAndBounds();
-    puts("VolumeDSP: 11 suites passed (attenuation, layouts, ramps/mute, invalid input, nonfinite/gain limits, alignment, feedback window/coalescing, feedback gain/layouts, feedback mute/invalid input, feedback missing/malformed input, feedback retrigger/bounds).");
+    puts("VolumeDSP: 12 suites passed (attenuation, layouts, ramps/mute, invalid input, nonfinite/gain limits, alignment, feedback window/coalescing, feedback gain/layouts, feedback mute/invalid input, feedback missing/malformed input, feedback retrigger/bounds, emergency mute).");
     return 0;
 }

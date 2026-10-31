@@ -1,0 +1,89 @@
+{
+  "subtitle": {
+    "message": "Volume das abas"
+  },
+  "current": {
+    "message": "Página atual"
+  },
+  "enable": {
+    "message": "Ativar"
+  },
+  "connecting": {
+    "message": "Conectando…"
+  },
+  "unavailable": {
+    "message": "Indisponível"
+  },
+  "list": {
+    "message": "Volume das páginas"
+  },
+  "mute": {
+    "message": "Silenciar"
+  },
+  "unmute": {
+    "message": "Ativar som"
+  },
+  "reset": {
+    "message": "Restaurar a 100%"
+  },
+  "stop": {
+    "message": "Parar controle"
+  },
+  "stopped": {
+    "message": "Parar restaura o volume original. Pause a reprodução primeiro."
+  },
+  "privacy": {
+    "message": "Processamento local. Nenhum áudio salvo."
+  },
+  "help": {
+    "message": "Como funciona"
+  },
+  "dismiss": {
+    "message": "Fechar erro"
+  },
+  "browserPage": {
+    "message": "Página do navegador"
+  },
+  "hint": {
+    "message": "Continua funcionando com esta janela fechada. O volume da página é combinado com o do app e o geral. Parar o controle restaura o volume original; pause a reprodução primeiro."
+  },
+  "reopen": {
+    "message": "Feche e reabra esta janela para tentar novamente."
+  },
+  "failure": {
+    "message": "Não foi possível aplicar: "
+  },
+  "volume": {
+    "message": "Volume"
+  },
+  "tab": {
+    "message": "Aba"
+  },
+  "errorConnection": {
+    "message": "A conexão de áudio está indisponível."
+  },
+  "errorCapture": {
+    "message": "Não foi possível capturar o áudio desta página. Recarregue e tente novamente."
+  },
+  "errorTimeout": {
+    "message": "O áudio não iniciou a tempo. Tente novamente."
+  },
+  "errorTabEnded": {
+    "message": "Esta aba não está mais sob controle. Ative-a novamente."
+  },
+  "errorUnavailable": {
+    "message": "Abra esta extensão em uma página da web comum."
+  },
+  "errorPermission": {
+    "message": "O acesso ao áudio foi negado. Abra a extensão nesta página e tente novamente."
+  },
+  "errorOperation": {
+    "message": "Não foi possível aplicar a alteração. Tente novamente."
+  },
+  "extensionName": {
+    "message": "USB Volume · Volume das abas"
+  },
+  "extensionDescription": {
+    "message": "Ajuste o volume e silencie cada aba. O áudio é processado no dispositivo, sem gravação nem envio."
+  }
+}

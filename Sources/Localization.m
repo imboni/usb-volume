@@ -1,4 +1,5 @@
 #import "Localization.h"
+#include <math.h>
 
 NSString *const UVLanguageDidChangeNotification = @"UVLanguageDidChange";
 static NSString *const UVLanguagePreference = @"USBVolume.language";
@@ -64,6 +65,27 @@ NSString *UVStringForLanguage(NSString *key, NSString *language) {
 
 NSString *UVL(NSString *key) { return UVStringForLanguage(key, UVCurrentLanguage()); }
 BOOL UVIsRightToLeft(void) { return [UVCurrentLanguage() isEqualToString:@"ar"]; }
+
+NSString *UVPercentString(double fraction) {
+    NSString *language = UVCurrentLanguage();
+    NSString *cacheKey = [@"USBVolume.percentFormatter." stringByAppendingString:language];
+    NSMutableDictionary *cache = NSThread.currentThread.threadDictionary;
+    NSNumberFormatter *formatter = cache[cacheKey];
+    if (!formatter) {
+        formatter = [[NSNumberFormatter alloc] init];
+        formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:language];
+        formatter.numberStyle = NSNumberFormatterPercentStyle;
+        formatter.minimumFractionDigits = 0;
+        formatter.maximumFractionDigits = 0;
+        cache[cacheKey] = formatter;
+    }
+    double value = isfinite(fraction) ? fmax(0, fmin(1, fraction)) : 0;
+    return [formatter stringFromNumber:@(value)] ?: @"0%";
+}
+
+NSString *UVIsolateText(NSString *text) {
+    return UVIsRightToLeft() ? [NSString stringWithFormat:@"\u2068%@\u2069", text] : text;
+}
 
 void UVRefreshLanguage(void) {
     NSString *old = UVCurrentLanguage();

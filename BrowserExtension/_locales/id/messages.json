@@ -1,0 +1,89 @@
+{
+  "subtitle": {
+    "message": "Volume tab"
+  },
+  "current": {
+    "message": "Halaman saat ini"
+  },
+  "enable": {
+    "message": "Aktifkan"
+  },
+  "connecting": {
+    "message": "Menghubungkan…"
+  },
+  "unavailable": {
+    "message": "Tidak tersedia"
+  },
+  "list": {
+    "message": "Volume halaman"
+  },
+  "mute": {
+    "message": "Bisukan"
+  },
+  "unmute": {
+    "message": "Aktifkan suara"
+  },
+  "reset": {
+    "message": "Atur ulang ke 100%"
+  },
+  "stop": {
+    "message": "Hentikan kontrol"
+  },
+  "stopped": {
+    "message": "Menghentikan kontrol memulihkan volume asli. Jeda pemutaran terlebih dahulu."
+  },
+  "privacy": {
+    "message": "Diproses di perangkat. Audio tidak disimpan."
+  },
+  "help": {
+    "message": "Cara penggunaan"
+  },
+  "dismiss": {
+    "message": "Tutup pesan kesalahan"
+  },
+  "browserPage": {
+    "message": "Halaman browser"
+  },
+  "hint": {
+    "message": "Kontrol tetap berjalan saat jendela ini ditutup. Volume halaman diterapkan bersama volume aplikasi dan volume utama. Menghentikan kontrol memulihkan volume asli; jeda pemutaran terlebih dahulu."
+  },
+  "reopen": {
+    "message": "Tutup lalu buka kembali jendela ini untuk mencoba lagi."
+  },
+  "failure": {
+    "message": "Tidak dapat diterapkan: "
+  },
+  "volume": {
+    "message": "Volume"
+  },
+  "tab": {
+    "message": "Tab"
+  },
+  "errorConnection": {
+    "message": "Koneksi audio tidak tersedia."
+  },
+  "errorCapture": {
+    "message": "Audio halaman ini tidak dapat ditangkap. Muat ulang lalu coba lagi."
+  },
+  "errorTimeout": {
+    "message": "Audio tidak dimulai tepat waktu. Coba lagi."
+  },
+  "errorTabEnded": {
+    "message": "Tab ini tidak lagi dikontrol. Aktifkan kembali."
+  },
+  "errorUnavailable": {
+    "message": "Buka ekstensi ini pada halaman web biasa."
+  },
+  "errorPermission": {
+    "message": "Akses audio ditolak. Buka ekstensi di halaman ini lalu coba lagi."
+  },
+  "errorOperation": {
+    "message": "Perubahan tidak dapat diterapkan. Coba lagi."
+  },
+  "extensionName": {
+    "message": "USB Volume · Volume tab"
+  },
+  "extensionDescription": {
+    "message": "Atur volume dan bisukan setiap tab secara terpisah. Audio diproses di perangkat tanpa direkam atau diunggah."
+  }
+}

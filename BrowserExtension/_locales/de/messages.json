@@ -1,0 +1,89 @@
+{
+  "subtitle": {
+    "message": "Tab-Lautstärke"
+  },
+  "current": {
+    "message": "Aktuelle Seite"
+  },
+  "enable": {
+    "message": "Aktivieren"
+  },
+  "connecting": {
+    "message": "Verbinden…"
+  },
+  "unavailable": {
+    "message": "Nicht verfügbar"
+  },
+  "list": {
+    "message": "Seitenlautstärke"
+  },
+  "mute": {
+    "message": "Stummschalten"
+  },
+  "unmute": {
+    "message": "Ton einschalten"
+  },
+  "reset": {
+    "message": "Auf 100 % setzen"
+  },
+  "stop": {
+    "message": "Steuerung beenden"
+  },
+  "stopped": {
+    "message": "Beim Beenden gilt wieder die ursprüngliche Lautstärke. Wiedergabe vorher pausieren."
+  },
+  "privacy": {
+    "message": "Lokale Verarbeitung. Keine Tonaufnahme."
+  },
+  "help": {
+    "message": "Hinweise"
+  },
+  "dismiss": {
+    "message": "Fehler schließen"
+  },
+  "browserPage": {
+    "message": "Browserseite"
+  },
+  "hint": {
+    "message": "Die Steuerung läuft bei geschlossenem Popup weiter. Die Seitenlautstärke wirkt zusammen mit App- und Gesamtlautstärke. Beim Beenden gilt die ursprüngliche Lautstärke. Wiedergabe vorher pausieren."
+  },
+  "reopen": {
+    "message": "Dieses Popup schließen und erneut öffnen, um es noch einmal zu versuchen."
+  },
+  "failure": {
+    "message": "Nicht angewendet: "
+  },
+  "volume": {
+    "message": "Lautstärke"
+  },
+  "tab": {
+    "message": "Tab"
+  },
+  "errorConnection": {
+    "message": "Die Audioverbindung ist nicht verfügbar."
+  },
+  "errorCapture": {
+    "message": "Der Ton dieser Seite kann nicht erfasst werden. Seite neu laden und erneut versuchen."
+  },
+  "errorTimeout": {
+    "message": "Der Tonstart hat zu lange gedauert. Erneut versuchen."
+  },
+  "errorTabEnded": {
+    "message": "Dieser Tab wird nicht mehr gesteuert. Erneut aktivieren."
+  },
+  "errorUnavailable": {
+    "message": "Diese Erweiterung auf einer normalen Webseite öffnen."
+  },
+  "errorPermission": {
+    "message": "Der Audiozugriff wurde verweigert. Die Erweiterung auf dieser Seite öffnen und erneut versuchen."
+  },
+  "errorOperation": {
+    "message": "Die Änderung konnte nicht angewendet werden. Erneut versuchen."
+  },
+  "extensionName": {
+    "message": "USB Volume · Tab-Lautstärke"
+  },
+  "extensionDescription": {
+    "message": "Lautstärke und Stummschaltung pro Tab. Audio bleibt auf dem Gerät und wird weder aufgenommen noch hochgeladen."
+  }
+}

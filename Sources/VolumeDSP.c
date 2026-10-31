@@ -7,6 +7,7 @@
 
 struct VDState {
     _Atomic float requestedGain;
+    _Atomic uint32_t immediateMute;
     _Atomic uint64_t callbacks;
     _Atomic uint64_t frames;
     _Atomic float inputPeak;
@@ -119,6 +120,7 @@ VDState *VDCreate(double sampleRate, float initialGain) {
     if (!state) return NULL;
     const float gain = VDClampGain(initialGain);
     atomic_init(&state->requestedGain, gain);
+    atomic_init(&state->immediateMute, 0);
     atomic_init(&state->callbacks, 0);
     atomic_init(&state->frames, 0);
     atomic_init(&state->inputPeak, 0);
@@ -128,7 +130,8 @@ VDState *VDCreate(double sampleRate, float initialGain) {
     atomic_init(&state->requestedFeedback, 0);
     atomic_init(&state->feedbackCount, 0);
     atomic_init(&state->reportedFeedbackRemaining, 0);
-    if (!atomic_is_lock_free(&state->requestedGain) ||
+    if (!atomic_is_lock_free(&state->immediateMute) ||
+        !atomic_is_lock_free(&state->requestedGain) ||
         !atomic_is_lock_free(&state->callbacks) ||
         !atomic_is_lock_free(&state->frames) ||
         !atomic_is_lock_free(&state->inputPeak) ||
@@ -170,6 +173,12 @@ void VDSetGain(VDState *state, float linearGain) {
                               memory_order_relaxed);
 }
 
+void VDMuteImmediately(VDState *state) {
+    if (!state) return;
+    atomic_store_explicit(&state->requestedGain, 0, memory_order_relaxed);
+    atomic_store_explicit(&state->immediateMute, 1, memory_order_release);
+}
+
 void VDTriggerFeedback(VDState *state) {
     if (state && atomic_load_explicit(&state->requestedGain,
                                       memory_order_relaxed) > 0.0f)
@@ -183,6 +192,13 @@ void VDProcess(VDState *state, const AudioBufferList *input,
         return;
     }
     atomic_fetch_add_explicit(&state->callbacks, 1, memory_order_relaxed);
+    if (atomic_exchange_explicit(&state->immediateMute, 0, memory_order_acquire)) {
+        state->currentGain = 0;
+        state->rampTarget = 0;
+        state->rampRemaining = 0;
+        state->feedbackRemaining = 0;
+        atomic_store_explicit(&state->requestedFeedback, 0, memory_order_relaxed);
+    }
     VDStartRampIfNeeded(state);
     if (state->rampTarget == 0.0f) {
         state->feedbackRemaining = 0;

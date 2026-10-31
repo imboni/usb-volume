@@ -1,0 +1,89 @@
+{
+  "subtitle": {
+    "message": "网页音量"
+  },
+  "current": {
+    "message": "当前网页"
+  },
+  "enable": {
+    "message": "控制此页"
+  },
+  "connecting": {
+    "message": "正在连接…"
+  },
+  "unavailable": {
+    "message": "不支持此页"
+  },
+  "list": {
+    "message": "网页音量"
+  },
+  "mute": {
+    "message": "静音"
+  },
+  "unmute": {
+    "message": "取消静音"
+  },
+  "reset": {
+    "message": "恢复 100%"
+  },
+  "stop": {
+    "message": "停止控制"
+  },
+  "stopped": {
+    "message": "停止会恢复网页原来的音量，建议先暂停播放。"
+  },
+  "privacy": {
+    "message": "本机处理，不保存音频"
+  },
+  "help": {
+    "message": "使用说明"
+  },
+  "dismiss": {
+    "message": "关闭错误提示"
+  },
+  "browserPage": {
+    "message": "浏览器页面"
+  },
+  "hint": {
+    "message": "关闭弹窗后继续生效。网页音量会与应用音量、总音量叠加。停止控制会恢复原音量，建议先暂停播放。"
+  },
+  "reopen": {
+    "message": "请关闭弹窗后重新打开重试。"
+  },
+  "failure": {
+    "message": "操作失败："
+  },
+  "volume": {
+    "message": "音量"
+  },
+  "tab": {
+    "message": "标签页"
+  },
+  "errorConnection": {
+    "message": "暂时无法连接音频服务。"
+  },
+  "errorCapture": {
+    "message": "此网页暂时无法捕获音频。请刷新网页后重试。"
+  },
+  "errorTimeout": {
+    "message": "音频启动超时，请重试。"
+  },
+  "errorTabEnded": {
+    "message": "此网页已停止控制，请重新启用。"
+  },
+  "errorUnavailable": {
+    "message": "请在普通网页上打开此扩展。"
+  },
+  "errorPermission": {
+    "message": "音频访问被拒绝。请在此网页上打开扩展后重试。"
+  },
+  "errorOperation": {
+    "message": "暂时无法应用更改，请重试。"
+  },
+  "extensionName": {
+    "message": "USB Volume · 网页音量"
+  },
+  "extensionDescription": {
+    "message": "分别调节网页标签页音量与静音。音频仅在本机处理，不录音、不上传。"
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "subtitle": {
+    "message": "탭 음량"
+  },
+  "current": {
+    "message": "현재 페이지"
+  },
+  "enable": {
+    "message": "사용"
+  },
+  "connecting": {
+    "message": "연결 중…"
+  },
+  "unavailable": {
+    "message": "사용 불가"
+  },
+  "list": {
+    "message": "페이지 음량"
+  },
+  "mute": {
+    "message": "음소거"
+  },
+  "unmute": {
+    "message": "음소거 해제"
+  },
+  "reset": {
+    "message": "100%로 복원"
+  },
+  "stop": {
+    "message": "제어 중지"
+  },
+  "stopped": {
+    "message": "중지하면 원래 음량으로 돌아갑니다. 먼저 재생을 일시 정지하세요."
+  },
+  "privacy": {
+    "message": "기기 내 처리 · 오디오 저장 안 함"
+  },
+  "help": {
+    "message": "사용 안내"
+  },
+  "dismiss": {
+    "message": "오류 닫기"
+  },
+  "browserPage": {
+    "message": "브라우저 페이지"
+  },
+  "hint": {
+    "message": "팝업을 닫아도 계속 작동합니다. 페이지 음량은 앱 및 전체 음량과 함께 적용됩니다. 제어를 중지하면 원래 음량으로 돌아가므로 먼저 재생을 일시 정지하세요."
+  },
+  "reopen": {
+    "message": "팝업을 닫았다가 다시 열어 재시도하세요."
+  },
+  "failure": {
+    "message": "적용할 수 없음: "
+  },
+  "volume": {
+    "message": "음량"
+  },
+  "tab": {
+    "message": "탭"
+  },
+  "errorConnection": {
+    "message": "오디오 서비스에 연결할 수 없습니다."
+  },
+  "errorCapture": {
+    "message": "이 페이지의 오디오를 가져올 수 없습니다. 새로고침 후 다시 시도하세요."
+  },
+  "errorTimeout": {
+    "message": "오디오 시작 시간이 초과되었습니다. 다시 시도하세요."
+  },
+  "errorTabEnded": {
+    "message": "이 탭의 제어가 종료되었습니다. 다시 사용 설정하세요."
+  },
+  "errorUnavailable": {
+    "message": "일반 웹페이지에서 이 확장 프로그램을 여세요."
+  },
+  "errorPermission": {
+    "message": "오디오 접근이 거부되었습니다. 이 페이지에서 확장 프로그램을 열고 다시 시도하세요."
+  },
+  "errorOperation": {
+    "message": "변경 사항을 적용할 수 없습니다. 다시 시도하세요."
+  },
+  "extensionName": {
+    "message": "USB Volume · 탭 음량"
+  },
+  "extensionDescription": {
+    "message": "각 탭의 음량과 음소거를 조절합니다. 오디오는 기기 내에서만 처리되며 녹음하거나 업로드하지 않습니다."
+  }
+}

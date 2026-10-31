@@ -1,0 +1,89 @@
+{
+  "subtitle": {
+    "message": "網頁音量"
+  },
+  "current": {
+    "message": "目前網頁"
+  },
+  "enable": {
+    "message": "控制此頁"
+  },
+  "connecting": {
+    "message": "正在連線…"
+  },
+  "unavailable": {
+    "message": "不支援此頁"
+  },
+  "list": {
+    "message": "網頁音量"
+  },
+  "mute": {
+    "message": "靜音"
+  },
+  "unmute": {
+    "message": "取消靜音"
+  },
+  "reset": {
+    "message": "還原為 100%"
+  },
+  "stop": {
+    "message": "停止控制"
+  },
+  "stopped": {
+    "message": "停止後會還原網頁原本的音量，建議先暫停播放。"
+  },
+  "privacy": {
+    "message": "本機處理，不儲存音訊"
+  },
+  "help": {
+    "message": "使用說明"
+  },
+  "dismiss": {
+    "message": "關閉錯誤提示"
+  },
+  "browserPage": {
+    "message": "瀏覽器頁面"
+  },
+  "hint": {
+    "message": "關閉彈出視窗後仍會生效。網頁音量會與應用程式音量、總音量疊加。停止控制會還原原本音量，建議先暫停播放。"
+  },
+  "reopen": {
+    "message": "請關閉彈出視窗後重新開啟再試。"
+  },
+  "failure": {
+    "message": "操作失敗："
+  },
+  "volume": {
+    "message": "音量"
+  },
+  "tab": {
+    "message": "分頁"
+  },
+  "errorConnection": {
+    "message": "暫時無法連線至音訊服務。"
+  },
+  "errorCapture": {
+    "message": "此網頁暫時無法擷取音訊，請重新整理網頁後再試。"
+  },
+  "errorTimeout": {
+    "message": "音訊啟動逾時，請重試。"
+  },
+  "errorTabEnded": {
+    "message": "此網頁已停止控制，請重新啟用。"
+  },
+  "errorUnavailable": {
+    "message": "請在一般網頁上開啟此擴充功能。"
+  },
+  "errorPermission": {
+    "message": "音訊存取遭拒。請在此網頁上開啟擴充功能後再試。"
+  },
+  "errorOperation": {
+    "message": "暫時無法套用變更，請重試。"
+  },
+  "extensionName": {
+    "message": "USB Volume · 網頁音量"
+  },
+  "extensionDescription": {
+    "message": "分別調整網頁分頁音量與靜音。音訊僅在本機處理，不錄音、不上傳。"
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "subtitle": {
+    "message": "タブの音量"
+  },
+  "current": {
+    "message": "現在のページ"
+  },
+  "enable": {
+    "message": "有効にする"
+  },
+  "connecting": {
+    "message": "接続中…"
+  },
+  "unavailable": {
+    "message": "利用不可"
+  },
+  "list": {
+    "message": "ページの音量"
+  },
+  "mute": {
+    "message": "ミュート"
+  },
+  "unmute": {
+    "message": "ミュート解除"
+  },
+  "reset": {
+    "message": "100% に戻す"
+  },
+  "stop": {
+    "message": "制御を停止"
+  },
+  "stopped": {
+    "message": "停止すると元の音量に戻ります。先に再生を一時停止してください。"
+  },
+  "privacy": {
+    "message": "端末内で処理。音声は保存しません。"
+  },
+  "help": {
+    "message": "使い方"
+  },
+  "dismiss": {
+    "message": "エラーを閉じる"
+  },
+  "browserPage": {
+    "message": "ブラウザのページ"
+  },
+  "hint": {
+    "message": "ポップアップを閉じても動作します。ページの音量はアプリと全体の音量に重ねて適用されます。停止すると元の音量に戻るため、先に再生を一時停止してください。"
+  },
+  "reopen": {
+    "message": "ポップアップを閉じて開き直し、再試行してください。"
+  },
+  "failure": {
+    "message": "適用できませんでした："
+  },
+  "volume": {
+    "message": "音量"
+  },
+  "tab": {
+    "message": "タブ"
+  },
+  "errorConnection": {
+    "message": "音声サービスに接続できません。"
+  },
+  "errorCapture": {
+    "message": "このページの音声を取得できません。ページを再読み込みしてお試しください。"
+  },
+  "errorTimeout": {
+    "message": "音声の開始がタイムアウトしました。再試行してください。"
+  },
+  "errorTabEnded": {
+    "message": "このタブの制御は終了しました。もう一度有効にしてください。"
+  },
+  "errorUnavailable": {
+    "message": "通常のウェブページでこの拡張機能を開いてください。"
+  },
+  "errorPermission": {
+    "message": "音声へのアクセスが拒否されました。このページで拡張機能を開いて再試行してください。"
+  },
+  "errorOperation": {
+    "message": "変更を適用できません。再試行してください。"
+  },
+  "extensionName": {
+    "message": "USB Volume · タブの音量"
+  },
+  "extensionDescription": {
+    "message": "タブごとに音量とミュートを調整。音声は端末内でのみ処理され、録音もアップロードもされません。"
+  }
+}
